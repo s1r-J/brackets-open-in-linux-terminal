@@ -1,0 +1,18 @@
+{
+	"name": "brackets-open-in-xfce-terminal",
+	"title": "Open in xfce terminal",
+	"description": "Open the project folder in xfce terminal.",
+	"homepage": "https://github.com/ranjandatta/brackets-open-in-xfce-terminal",
+	"version": "1.0.0",
+	"author": "Ranjan Datta (https://github.com/ranjandatta)",
+	"license": "MIT",
+	"categories": "shell",
+	"keywords": [
+		"terminal",
+		"shell",
+		"xfce"
+	],
+	"engines": {
+		"brackets": ">=0.36.0"
+	}
+}
