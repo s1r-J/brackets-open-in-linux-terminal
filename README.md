@@ -9,6 +9,10 @@ Open the project folder in xfce.
 
 opens xfce terminal in [drop down mode](http://docs.xfce.org/apps/terminal/dropdown)
 
+My terminal dropdown settings are as below:
+
+![Settings](images/settings.png)
+
 ##Install
 
 from the extension manager, search for 'xfce terminal'
