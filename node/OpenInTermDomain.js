@@ -2,10 +2,23 @@
 	"use strict";
 
 	var exec = require("child_process").exec;
+	
+		
 
-	function cmdStartTerm(path) {
-		console.log("In cmdStartTerm, path: '" + path + "'");
-		exec('xfce4-terminal --working-directory="' + path + '" --drop-down');
+	function cmdStartTerm(path, term) {
+		
+		var commandMap = {
+			"xfce4-terminal" :  'xfce4-terminal --working-directory="' + path + '" --drop-down',
+			"konsole" : 'konsole --workdir ' + path,
+			"gnome-terminal" : 'gnome-terminal --working-directory="' + path + '"',
+			"lxterminal" : 'lxterminal --working-directory="' + path + '"',
+			"terminator" : 'terminator --working-directory="' + path + '"'
+		}
+		
+		console.log('In cmdStartTerm, command: "' + commandMap[term]);
+		
+		//exec('xfce4-terminal --working-directory="' + path + '" --drop-down');
+		exec(commandMap[term]);
 		return true;
 	}
 
@@ -21,7 +34,10 @@
 			"Starts xfce terminal, which should be defined in the PATH environment variable",
 			[{name: "path", // parameters
 				type: "string",
-				description: "The starting path, the most often: the project folder path"}],
+				description: "The starting path, the most often: the project folder path"},
+			 {name: "term", // parameters
+				type: "string",
+				description: "alternate terminal"}],
 			[] // return value
 		);
 	}
