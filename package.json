@@ -3,7 +3,7 @@
 	"title": "Open in xfce terminal",
 	"description": "Open the project folder in xfce terminal.",
 	"homepage": "https://github.com/ranjandatta/brackets-open-in-xfce-terminal",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "Ranjan Datta (https://github.com/ranjandatta)",
 	"license": "MIT",
 	"categories": "shell",
