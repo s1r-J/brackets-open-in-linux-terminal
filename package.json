@@ -10,7 +10,12 @@
 	"keywords": [
 		"terminal",
 		"shell",
-		"xfce"
+		"xfce",
+		"gnome",
+		"kde",
+		"lxde",
+		"terminator",
+		"linux"
 	],
 	"engines": {
 		"brackets": ">=0.36.0"
