@@ -5,18 +5,20 @@ Open in linux terminal
 
 Open the project folder in terminal (xfce terminal by default).
 
-Currently support:
+*Currently supports:
 
 xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator
 
-To use other terminals, open brackets.json file (Debug >> Open Preferences File) and add your terminal
-
-![Preferences](images/brackets.json.png)
-
 ##Install
 
-from the extension manager, search for 'linux terminal'
-and press 'Install'.
+In extension manager, search for 'linux terminal' and press 'Install'.
+
+To configure terminal other than xfce terminal, open brackets.json file (Debug >> Open Preferences File) and add your terminal
+<code>
+	"openinterm.terminal" : "lxterminal"
+</code>
+
+![Preferences](images/brackets.json.png)
 
 ##Settings for xfce terminal##
 
