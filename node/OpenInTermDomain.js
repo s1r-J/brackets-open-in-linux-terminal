@@ -1,3 +1,6 @@
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
+/*global require, exports*/
+
 (function () {
 	"use strict";
 
@@ -13,7 +16,7 @@
 			"gnome-terminal" : 'gnome-terminal --working-directory="' + path + '"',
 			"lxterminal" : 'lxterminal --working-directory="' + path + '"',
 			"terminator" : 'terminator --working-directory="' + path + '"'
-		}
+		};
 		
 		console.log('In cmdStartTerm, command: "' + commandMap[term]);
 		
