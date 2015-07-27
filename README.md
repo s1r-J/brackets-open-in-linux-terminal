@@ -9,6 +9,8 @@ Open the project folder in terminal (xfce terminal by default).
 
 xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator
 
+NEW: Support for osX Terminal
+
 ##Install
 
 In extension manager, search for 'linux terminal' and press 'Install'.
@@ -18,7 +20,13 @@ To configure terminal other than xfce terminal, open brackets.json file (Debug >
 	"openinterm.terminal" : "lxterminal"
 </code>
 
+To configure in osX, open brackets.json and add
+<code>
+	"openinterm.terminal" : "Terminal"
+</code>
+
 ![Preferences](images/brackets.json.png)
+![Preferences osX](images/brackets.json-mac.png)
 
 ##Settings for xfce terminal##
 

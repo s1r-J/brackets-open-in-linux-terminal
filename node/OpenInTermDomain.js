@@ -5,11 +5,11 @@
 	"use strict";
 
 	var exec = require("child_process").exec;
-	
-		
+
+
 
 	function cmdStartTerm(path, term) {
-		
+
 		var commandMap = {
 			"xfce4-terminal" :  'xfce4-terminal --working-directory="' + path + '" --drop-down',
 			"konsole" : 'konsole --workdir ' + path,
@@ -17,10 +17,17 @@
 			"lxterminal" : 'lxterminal --working-directory="' + path + '"',
 			"terminator" : 'terminator --working-directory="' + path + '"'
 		};
-		
+
 		console.log('In cmdStartTerm, command: "' + commandMap[term]);
-		
-		//exec('xfce4-terminal --working-directory="' + path + '" --drop-down');
+
+		// mac terminal
+		if(term === 'Terminal') {
+			var spawn = require('child_process').spawn;
+			spawn('open', ['-a', 'Terminal', path]);
+			return true;
+		}
+
+		// linux terminal
 		exec(commandMap[term]);
 		return true;
 	}
@@ -34,10 +41,10 @@
 			"startTerm", // command name
 			cmdStartTerm, // command handler function
 			false, // this command is synchronous in Node
-			"Starts xfce terminal, which should be defined in the PATH environment variable",
+			"Starts linux or mac terminal",
 			[{name: "path", // parameters
 				type: "string",
-				description: "The starting path, the most often: the project folder path"},
+				description: "The starting path: the project folder path"},
 			 {name: "term", // parameters
 				type: "string",
 				description: "alternate terminal"}],
