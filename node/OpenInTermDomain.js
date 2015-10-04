@@ -20,10 +20,15 @@
 
 		console.log('In cmdStartTerm, command: "' + commandMap[term]);
 
-		// mac terminal
+		// mac terminals
 		if(term === 'Terminal') {
 			var spawn = require('child_process').spawn;
 			spawn('open', ['-a', 'Terminal', path]);
+			return true;
+		}
+		if(term === 'iTerm') {
+			var spawn = require('child_process').spawn;
+			spawn('open', ['-a', 'iTerm', path]);
 			return true;
 		}
 
