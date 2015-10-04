@@ -2,61 +2,50 @@
 /*global require, exports*/
 
 (function () {
-	"use strict";
+    "use strict";
 
-	var exec = require("child_process").exec;
+    var process = require("child_process"),
+        exec = process.exec,
+        spawn = process.spawn;
 
+    function cmdStartTerm(path, term) {
 
+        var commandMap = {
+            "xfce4-terminal": 'xfce4-terminal --working-directory="' + path + '" --drop-down',
+            "konsole": 'konsole --workdir ' + path,
+            "gnome-terminal": 'gnome-terminal --working-directory="' + path + '"',
+            "lxterminal": 'lxterminal --working-directory="' + path + '"',
+            "terminator": 'terminator --working-directory="' + path + '"'
+        };
 
-	function cmdStartTerm(path, term) {
+        console.log('In cmdStartTerm, command: "' + commandMap[term]);
 
-		var commandMap = {
-			"xfce4-terminal" :  'xfce4-terminal --working-directory="' + path + '" --drop-down',
-			"konsole" : 'konsole --workdir ' + path,
-			"gnome-terminal" : 'gnome-terminal --working-directory="' + path + '"',
-			"lxterminal" : 'lxterminal --working-directory="' + path + '"',
-			"terminator" : 'terminator --working-directory="' + path + '"'
-		};
+        // mac terminals
+        if (term === 'Terminal' || term === 'iTerm') {
+            spawn('open', ['-a', term, path]);
+            return true;
+        }
 
-		console.log('In cmdStartTerm, command: "' + commandMap[term]);
+        // linux terminal
+        exec(commandMap[term]);
+        return true;
+    }
 
-		// mac terminals
-		if(term === 'Terminal') {
-			var spawn = require('child_process').spawn;
-			spawn('open', ['-a', 'Terminal', path]);
-			return true;
-		}
-		if(term === 'iTerm') {
-			var spawn = require('child_process').spawn;
-			spawn('open', ['-a', 'iTerm', path]);
-			return true;
-		}
+    function init(domainManager) {
+        var paramsArray = [
+                { name: "path", type: "string", description: "The starting path: the project folder path" },
+                { name: "term", type: "string", description: "alternate terminal" }
+            ];
 
-		// linux terminal
-		exec(commandMap[term]);
-		return true;
-	}
+        if (!domainManager.hasDomain("openInTerm")) {
+            domainManager.registerDomain("openInTerm", {
+                major: 0,
+                minor: 1
+            });
+        }
+        domainManager.registerCommand("openInTerm", "startTerm", cmdStartTerm, false, "Starts linux or mac terminal", paramsArray, []);
+    }
 
-	function init(domainManager) {
-		if (!domainManager.hasDomain("openInTerm")) {
-			domainManager.registerDomain("openInTerm", {major: 0, minor: 1});
-		}
-		domainManager.registerCommand(
-			"openInTerm", // domain name
-			"startTerm", // command name
-			cmdStartTerm, // command handler function
-			false, // this command is synchronous in Node
-			"Starts linux or mac terminal",
-			[{name: "path", // parameters
-				type: "string",
-				description: "The starting path: the project folder path"},
-			 {name: "term", // parameters
-				type: "string",
-				description: "alternate terminal"}],
-			[] // return value
-		);
-	}
-
-	exports.init = init;
+    exports.init = init;
 
 }());
