@@ -24,6 +24,11 @@ To configure in osX, open brackets.json and add
 <code>
 	"openinterm.terminal" : "Terminal"
 </code>
+or, if you prefer iTerm2, 
+<code>
+	"openinterm.terminal" : "iTerm"
+</code>
+
 
 ![Preferences](images/brackets.json.png)
 ![Preferences osX](images/brackets.json-mac.png)
