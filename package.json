@@ -1,9 +1,9 @@
 {
 	"name": "brackets-open-in-linux-terminal",
 	"title": "Open project in terminal (xfce by default)",
-	"description": "Open the project folder in terminal. Now supports xfce4-terminal, konsole, genome-terminal, lxterminal and terminator\nNEW: Support for osX Terminal",
+	"description": "Open the project folder in terminal. Now supports xfce4-terminal, konsole, genome-terminal, lxterminal and terminator\nNEW: Support for osX Terminal and iTerm",
 	"homepage": "https://github.com/ranjandatta/brackets-open-in-xfce-terminal",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"author": "Ranjan Datta (https://github.com/ranjandatta)",
 	"license": "MIT",
 	"categories": "shell",
@@ -19,7 +19,8 @@
 		"konsole",
 		"gnome-terminal",
 		"lxterminal",
-		"Terminal"
+		"Terminal",
+		"iTerm"
 	],
 	"engines": {
 		"brackets": ">=0.36.0"
