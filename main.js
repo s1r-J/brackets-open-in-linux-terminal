@@ -1,5 +1,5 @@
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
-/*global define, $, brackets */
+/*global define, $, document, brackets */
 
 define(function (require, exports, module) {
 
@@ -47,4 +47,14 @@ define(function (require, exports, module) {
     menu1.addMenuItem(COMMAND_ID);
     var menu2 = Menus.getContextMenu(Menus.ContextMenuIds.WORKING_SET_MENU);
     menu2.addMenuItem(COMMAND_ID);
+
+
+    /* Create Terminal Icon */
+    ExtensionUtils.loadStyleSheet(module, "styles/styles.css");
+    $(document.createElement("a"))
+        .attr("id", "open-in-term-icon")
+        .attr("href", "#")
+        .attr("title", "Open in Terminal")
+        .on("click", openInTerm)
+        .appendTo($("#main-toolbar .buttons"));
 });
