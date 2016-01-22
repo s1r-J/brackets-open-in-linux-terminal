@@ -1,0 +1,26 @@
+<div class="about-dialog modal openinterm-dialog">
+    <div class="modal-header">
+        <h3>Open in Terminal Preferences</h3>
+    </div>
+    <div class="modal-body openinterm">
+
+       <h4>Select your terminal</h4>
+        <select name="openInTermSelect" id="openInTermSelect">
+            <optgroup label="Linux Terminals">
+                <option value="konsole">Konsole</option>
+                <option value="gnome-terminal">Gnome Terminal</option>
+                <option value="lxterminal">LX Terminal</option>
+                <option value="terminator">Terminator</option>
+                <option value="xfce4-terminal">XFCE4 Ternimal</option>
+            </optgroup>
+            <optgroup label="OSX Terminals">
+                <option value="Terminal">Terminal</option>
+                <option value="iTerm">iTerm</option>
+            </optgroup>
+        </select>
+    </div>
+    <div class="modal-footer">
+        <button id="openInTermSubmit" class="btn dialog-button primary">SAVE</button>
+        <button class="dialog-button btn left" data-button-id="close">CANCEL</button>
+    </div>
+</div>

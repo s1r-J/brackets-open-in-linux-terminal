@@ -1,5 +1,5 @@
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
-/*global define, $, document, brackets */
+/*global define, $, document, brackets, Mustache */
 
 define(function (require, exports, module) {
 
@@ -10,19 +10,31 @@ define(function (require, exports, module) {
         CommandManager = brackets.getModule("command/CommandManager"),
         Menus = brackets.getModule("command/Menus"),
         ProjectManager = brackets.getModule("project/ProjectManager"),
+        Dialogs = brackets.getModule("widgets/Dialogs"),
+        PanelTemplate       = require("text!panel.html"),
         COMMAND_ID = "openinterm.open",
+        DIALOG_ID = "openinterm.pref",
         PreferencesManager = brackets.getModule("preferences/PreferencesManager"),
         prefs = PreferencesManager.getExtensionPrefs("openinterm"),
         term = prefs.get("terminal");
 
     var openInTermDomain = new NodeDomain("openInTerm", ExtensionUtils.getModulePath(module, "node/OpenInTermDomain"));
 
+    var setPreferences = function () {
+        var terminal = $('#openInTermSelect').val();
+
+        prefs.set("terminal", terminal);
+        prefs.save();
+
+        alert(terminal + " set as your terminal! \n\n Please reload extensions by pressing F5");
+
+    };
+
     var openInTerm = function () {
-        if (!term) {
+         if (!term) {
             prefs.definePreference("terminal", "string", "xfce4-terminal");
             term = "xfce4-terminal";
         }
-
 
         console.log("Entering in openInTerm with :" + term);
 
@@ -41,12 +53,28 @@ define(function (require, exports, module) {
 
     };
 
+    var openPrefDialog = function () {
+        var localizedTemplate = Mustache.render(PanelTemplate);
+        Dialogs.showModalDialogUsingTemplate(localizedTemplate);
+
+        if(prefs.get('terminal')) {
+            $('#openInTermSelect').val(term);
+        }
+
+        $('#openInTermSubmit').on('click', setPreferences);
+    };
+
     CommandManager.register("Open in Term", COMMAND_ID, openInTerm);
+    CommandManager.register("Set Terminal", DIALOG_ID, openPrefDialog);
 
     var menu1 = Menus.getContextMenu(Menus.ContextMenuIds.PROJECT_MENU);
     menu1.addMenuItem(COMMAND_ID);
     var menu2 = Menus.getContextMenu(Menus.ContextMenuIds.WORKING_SET_MENU);
     menu2.addMenuItem(COMMAND_ID);
+
+    var menu3 = Menus.getMenu(Menus.AppMenuBar.VIEW_MENU);
+    menu3.addMenuDivider();
+    menu3.addMenuItem(DIALOG_ID);
 
 
     /* Create Terminal Icon */
@@ -57,4 +85,6 @@ define(function (require, exports, module) {
         .attr("title", "Open in Terminal")
         .on("click", openInTerm)
         .appendTo($("#main-toolbar .buttons"));
+
+
 });

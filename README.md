@@ -15,45 +15,13 @@ NEW: Support for osX Terminal
 
 In extension manager, search for 'open project in terminal' and click 'Install'.
 
-_To configure terminal in **Linux** other than xfce terminal, open brackets.json file (Debug >> Open Preferences File) and add your terminal_
+_To configure terminal Click View >> Set Terminal_
 
-![Preferences Linux](images/brackets.json.png)
+![Set Preferences](images/setterm.png)
 
-<code>
-	"openinterm.terminal" : "lxterminal"
-</code>
+Select One of the avilable options
 
-OR
-
-<code>
-    "openinterm.terminal" : "konsole"
-</code>
-
-OR
-
-<code>
-    "openinterm.terminal" : "gnome-terminal"
-</code>
-
-OR
-
-<code>
-    "openinterm.terminal" : "terminator"
-</code>
-
-_To configure in **OSX**, open brackets.json and add_
-
-![Preferences OSX](images/brackets.json-mac.png)
-
-<code>
-	"openinterm.terminal" : "Terminal"
-</code>
-
-OR
-
-<code>
-	"openinterm.terminal" : "iTerm"
-</code>
+![Preferences UI](images/ui.png)
 
 ##Opening a terminal
 
@@ -66,12 +34,3 @@ OR
 Click the terminal icon in the extensions toolbar
 
 ![Open](images/ext.png)
-
-
-##Settings for xfce terminal##
-
-opens xfce terminal in [drop down mode](http://docs.xfce.org/apps/terminal/dropdown)
-
-My terminal dropdown settings are as below:
-
-![Settings](images/settings.png)
