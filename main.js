@@ -25,13 +25,13 @@ define(function (require, exports, module) {
 
         prefs.set("terminal", terminal);
         prefs.save();
-
-        alert(terminal + " set as your terminal! \n\n Please reload extensions by pressing F5");
+        CommandManager.execute(Commands.APP_RELOAD);
+        //alert(terminal + " set as your terminal! \n\n Please reload extensions by pressing F5");
 
     };
 
     var openInTerm = function () {
-         if (!term) {
+        if (!term) {
             prefs.definePreference("terminal", "string", "xfce4-terminal");
             term = "xfce4-terminal";
         }
@@ -57,14 +57,14 @@ define(function (require, exports, module) {
         var localizedTemplate = Mustache.render(PanelTemplate);
         Dialogs.showModalDialogUsingTemplate(localizedTemplate);
 
-        if(prefs.get('terminal')) {
+        if (prefs.get('terminal')) {
             $('#openInTermSelect').val(term);
         }
 
         $('#openInTermSubmit').on('click', setPreferences);
     };
 
-    CommandManager.register("Open in Term", COMMAND_ID, openInTerm);
+    CommandManager.register("Open in Terminal", COMMAND_ID, openInTerm);
     CommandManager.register("Set Terminal", DIALOG_ID, openPrefDialog);
 
     var menu1 = Menus.getContextMenu(Menus.ContextMenuIds.PROJECT_MENU);
