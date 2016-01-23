@@ -8,6 +8,7 @@ define(function (require, exports, module) {
     var NodeDomain = brackets.getModule("utils/NodeDomain"),
         ExtensionUtils = brackets.getModule("utils/ExtensionUtils"),
         CommandManager = brackets.getModule("command/CommandManager"),
+        Commands = brackets.getModule("command/Commands"),
         Menus = brackets.getModule("command/Menus"),
         ProjectManager = brackets.getModule("project/ProjectManager"),
         Dialogs = brackets.getModule("widgets/Dialogs"),
