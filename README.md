@@ -1,5 +1,5 @@
-Open in linux terminal
-=====================
+Open in terminal
+================
 
 **Extension for Adobe Brackets**
 
