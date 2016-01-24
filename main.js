@@ -5,21 +5,30 @@ define(function (require, exports, module) {
 
     "use strict";
 
-    var NodeDomain = brackets.getModule("utils/NodeDomain"),
-        ExtensionUtils = brackets.getModule("utils/ExtensionUtils"),
-        CommandManager = brackets.getModule("command/CommandManager"),
-        Commands = brackets.getModule("command/Commands"),
-        Menus = brackets.getModule("command/Menus"),
-        ProjectManager = brackets.getModule("project/ProjectManager"),
-        Dialogs = brackets.getModule("widgets/Dialogs"),
+    var AppInit             = brackets.getModule("utils/AppInit"),
+        NodeDomain          = brackets.getModule("utils/NodeDomain"),
+        ExtensionUtils      = brackets.getModule("utils/ExtensionUtils"),
+        CommandManager      = brackets.getModule("command/CommandManager"),
+        Commands            = brackets.getModule("command/Commands"),
+        Menus               = brackets.getModule("command/Menus"),
+        ProjectManager      = brackets.getModule("project/ProjectManager"),
+        Dialogs             = brackets.getModule("widgets/Dialogs"),
         PanelTemplate       = require("text!panel.html"),
-        COMMAND_ID = "openinterm.open",
-        DIALOG_ID = "openinterm.pref",
-        PreferencesManager = brackets.getModule("preferences/PreferencesManager"),
-        prefs = PreferencesManager.getExtensionPrefs("openinterm"),
-        term = prefs.get("terminal");
+        COMMAND_ID          = "openinterm.open",
+        DIALOG_ID           = "openinterm.pref",
+        PreferencesManager  = brackets.getModule("preferences/PreferencesManager"),
+        prefs               = PreferencesManager.getExtensionPrefs("openinterm"),
+        term                = prefs.get("terminal");
 
     var openInTermDomain = new NodeDomain("openInTerm", ExtensionUtils.getModulePath(module, "node/OpenInTermDomain"));
+
+
+    var initTerm = function() {
+
+        if(!term) {
+            openPrefDialog();
+        }
+    };
 
     var setPreferences = function () {
         var terminal = $('#openInTermSelect').val();
@@ -32,10 +41,6 @@ define(function (require, exports, module) {
     };
 
     var openInTerm = function () {
-        if (!term) {
-            prefs.definePreference("terminal", "string", "xfce4-terminal");
-            term = "xfce4-terminal";
-        }
 
         console.log("Entering in openInTerm with :" + term);
 
@@ -87,5 +92,6 @@ define(function (require, exports, module) {
         .on("click", openInTerm)
         .appendTo($("#main-toolbar .buttons"));
 
+    AppInit.extensionsLoaded(initTerm);
 
 });
