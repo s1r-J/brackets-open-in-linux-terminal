@@ -15,7 +15,8 @@
             "konsole": 'konsole --workdir ' + path,
             "gnome-terminal": 'gnome-terminal --working-directory="' + path + '"',
             "lxterminal": 'lxterminal --working-directory="' + path + '"',
-            "terminator": 'terminator --working-directory="' + path + '"'
+            "terminator": 'terminator --working-directory="' + path + '"',
+            "cmd" : 'start "CMD" /D "' + path + '"'
         };
 
         console.log('In cmdStartTerm, command: "' + commandMap[term]);
@@ -26,7 +27,7 @@
             return true;
         }
 
-        // linux terminal
+        // linux terminal and windows cmd
         exec(commandMap[term]);
         return true;
     }
@@ -43,7 +44,7 @@
                 minor: 1
             });
         }
-        domainManager.registerCommand("openInTerm", "startTerm", cmdStartTerm, false, "Starts linux or mac terminal", paramsArray, []);
+        domainManager.registerCommand("openInTerm", "startTerm", cmdStartTerm, false, "Starts linux, mac or windows terminal", paramsArray, []);
     }
 
     exports.init = init;

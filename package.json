@@ -20,7 +20,10 @@
 		"gnome-terminal",
 		"lxterminal",
 		"Terminal",
-		"iTerm"
+		"iTerm",
+        "cmd",
+        "command line",
+        "windows"
 	],
 	"engines": {
 		"brackets": ">=0.36.0"
