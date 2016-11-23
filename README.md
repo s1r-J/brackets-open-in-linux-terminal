@@ -3,15 +3,18 @@ Open in terminal
 
 **Extension for Adobe Brackets**
 
-Open the project folder in terminal (xfce terminal by default).
+Open the project folder in terminal.
 
-*Currently supports:
+Currently supports:
 
 xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator
 
-NEW: Support for osX Terminal
+NEW: Support for OSX Terminal and iTerm
 
-##Install
+NEW: Support for Windows cmd
+
+
+## Install
 
 In extension manager, search for 'open project in terminal' and click 'Install'.
 
@@ -23,7 +26,7 @@ Select One of the avilable options
 
 ![Preferences UI](images/ui.png)
 
-##Opening a terminal
+## Opening a terminal
 
 Right click on the sidebar and click "Open in Term"
 

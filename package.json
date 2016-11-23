@@ -1,31 +1,31 @@
 {
-	"name": "brackets-open-in-linux-terminal",
-	"title": "Open project in terminal (xfce by default)",
-	"description": "Open the project folder in terminal. Now supports xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator\nAlso works on OSX for Terminal and iTerm (thanks to Pauli Price)",
-	"homepage": "https://github.com/ranjandatta/brackets-open-in-xfce-terminal",
-	"version": "1.1.3",
-	"author": ["Ranjan Datta (https://github.com/ranjandatta)", "Pauli Price (https://github.com/marfarma)"],
-	"license": "MIT",
-	"categories": "shell",
-	"keywords": [
-		"terminal",
-		"shell",
-		"xfce",
-		"gnome",
-		"kde",
-		"lxde",
-		"terminator",
-		"linux",
-		"konsole",
-		"gnome-terminal",
-		"lxterminal",
-		"Terminal",
-		"iTerm",
+    "name": "brackets-open-in-linux-terminal",
+    "title": "Open project in terminal",
+    "description": "Open the project folder in terminal. Now supports xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator\nAlso works on OSX for Terminal and iTerm (thanks to Pauli Price)\nNow works in Windows for cmd (thanks to , Joshua McKinney)",
+    "homepage": "https://github.com/ranjandatta/brackets-open-in-linux-terminal",
+    "version": "1.2.0",
+    "author": ["Ranjan Datta (https://github.com/ranjandatta)", "Pauli Price (https://github.com/marfarma)", "Joshua McKinney (https://github.com/meeple142)"],
+    "license": "MIT",
+    "categories": "shell",
+    "keywords": [
+        "terminal",
+        "shell",
+        "xfce",
+        "gnome",
+        "kde",
+        "lxde",
+        "terminator",
+        "linux",
+        "konsole",
+        "gnome-terminal",
+        "lxterminal",
+        "Terminal",
+        "iTerm",
         "cmd",
         "command line",
         "windows"
-	],
-	"engines": {
-		"brackets": ">=0.36.0"
-	}
+    ],
+    "engines": {
+        "brackets": ">=0.36.0"
+    }
 }
