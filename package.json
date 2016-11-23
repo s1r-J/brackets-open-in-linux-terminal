@@ -1,10 +1,10 @@
 {
     "name": "brackets-open-in-linux-terminal",
     "title": "Open project in terminal",
-    "description": "Open the project folder in terminal. Now supports xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator\nAlso works on OSX for Terminal and iTerm (thanks to Pauli Price)\nNow works in Windows for cmd (thanks to , Joshua McKinney)",
+    "description": "Open the project folder in terminal. Supports xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator, OSX Terminal and iTerm, Windows cmd",
     "homepage": "https://github.com/ranjandatta/brackets-open-in-linux-terminal",
-    "version": "1.2.0",
-    "author": ["Ranjan Datta (https://github.com/ranjandatta)", "Pauli Price (https://github.com/marfarma)", "Joshua McKinney (https://github.com/meeple142)"],
+    "version": "1.2.1",
+    "author": ["Ranjan Datta, Pauli Price, Joshua McKinney"],
     "license": "MIT",
     "categories": "shell",
     "keywords": [
@@ -21,6 +21,8 @@
         "lxterminal",
         "Terminal",
         "iTerm",
+        "osx",
+        "mac",
         "cmd",
         "command line",
         "windows"
