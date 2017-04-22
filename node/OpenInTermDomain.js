@@ -16,7 +16,8 @@
             "gnome-terminal": 'gnome-terminal --working-directory="' + path + '"',
             "lxterminal": 'lxterminal --working-directory="' + path + '"',
             "terminator": 'terminator --working-directory="' + path + '"',
-            "cmd": 'start "Powershell" cmd /c powershell.exe -noexit -command "Set-Location \'' + path + '\''
+            "cmd": 'start "CMD" /D "' + path + '"',
+            "powershell": 'start "Powershell" powershell -noexit -command "Set-Location \'' + path + '\''
         };
 
         console.log('In cmdStartTerm, command: "' + commandMap[term]);

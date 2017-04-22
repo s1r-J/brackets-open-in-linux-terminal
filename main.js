@@ -47,37 +47,26 @@ define(function (require, exports, module) {
         var entry = ProjectManager.getProjectRoot();
         var currentDocument = DocumentManager.getCurrentDocument();
         var selectedItem = ProjectManager.getSelectedItem();
-        console.log(selectedItem);
+        var terminalPath;
+
         if (selectedItem) {
             if (selectedItem._isDirectory) {
-                console.log("Entering in openInTerm, path with my code '" + selectedItem._path + "'");
-                openInTermDomain.exec("startTerm", selectedItem._path, term)
-                    .done(function () {
-                        console.log("Term successfully started, showing : '" + selectedItem._path + "'");
-                    })
-                    .fail(function (err) {
-                        console.error("Error showing '" + selectedItem._path + "' in Term:", err);
-                    });
+                terminalPath = selectedItem._path;
             } else {
-                console.log("Entering in openInTerm, path with my code '" + selectedItem._parentPath + "'");
-                openInTermDomain.exec("startTerm", selectedItem._parentPath, term)
-                    .done(function () {
-                        console.log("Term successfully started, showing : '" + selectedItem._parentPath + "'");
-                    })
-                    .fail(function (err) {
-                        console.error("Error showing '" + selectedItem._parentPath + "' in Term:", err);
-                    });
+                terminalPath = selectedItem._parentPath;
             }
         } else if (entry) {
-            console.log("Entering in openInTerm, path: '" + entry.fullPath + "'");
-            openInTermDomain.exec("startTerm", entry.fullPath, term)
-                .done(function () {
-                    console.log("Term successfully started, showing : '" + entry.fullPath + "'");
-                })
-                .fail(function (err) {
-                    console.error("Error showing '" + entry.fullPath + "' in Term:", err);
-                });
+            terminalPath = entry.fullPath;
         }
+
+        console.log("Entering in openInTerm, path '" + terminalPath + "'");
+        openInTermDomain.exec("startTerm", terminalPath, term)
+            .done(function () {
+                console.log("Term successfully started, showing : '" + terminalPath + "'");
+            })
+            .fail(function (err) {
+                console.error("Error showing '" + terminalPath + "' in Term:", err);
+            });
         console.log("openInTerm end");
 
     };
