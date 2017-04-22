@@ -5,27 +5,28 @@ define(function (require, exports, module) {
 
     "use strict";
 
-    var AppInit             = brackets.getModule("utils/AppInit"),
-        NodeDomain          = brackets.getModule("utils/NodeDomain"),
-        ExtensionUtils      = brackets.getModule("utils/ExtensionUtils"),
-        CommandManager      = brackets.getModule("command/CommandManager"),
-        Commands            = brackets.getModule("command/Commands"),
-        Menus               = brackets.getModule("command/Menus"),
-        ProjectManager      = brackets.getModule("project/ProjectManager"),
-        Dialogs             = brackets.getModule("widgets/Dialogs"),
-        PanelTemplate       = require("text!panel.html"),
-        COMMAND_ID          = "openinterm.open",
-        DIALOG_ID           = "openinterm.pref",
-        PreferencesManager  = brackets.getModule("preferences/PreferencesManager"),
-        prefs               = PreferencesManager.getExtensionPrefs("openinterm"),
-        term                = prefs.get("terminal");
+    var AppInit = brackets.getModule("utils/AppInit"),
+        NodeDomain = brackets.getModule("utils/NodeDomain"),
+        ExtensionUtils = brackets.getModule("utils/ExtensionUtils"),
+        CommandManager = brackets.getModule("command/CommandManager"),
+        Commands = brackets.getModule("command/Commands"),
+        Menus = brackets.getModule("command/Menus"),
+        ProjectManager = brackets.getModule("project/ProjectManager"),
+        Dialogs = brackets.getModule("widgets/Dialogs"),
+        PanelTemplate = require("text!panel.html"),
+        COMMAND_ID = "openinterm.open",
+        DIALOG_ID = "openinterm.pref",
+        PreferencesManager = brackets.getModule("preferences/PreferencesManager"),
+        prefs = PreferencesManager.getExtensionPrefs("openinterm"),
+        DocumentManager = brackets.getModule('document/DocumentManager'),
+        term = prefs.get("terminal");
 
     var openInTermDomain = new NodeDomain("openInTerm", ExtensionUtils.getModulePath(module, "node/OpenInTermDomain"));
 
 
-    var initTerm = function() {
+    var initTerm = function () {
 
-        if(!term) {
+        if (!term) {
             openPrefDialog();
         }
     };
@@ -43,9 +44,31 @@ define(function (require, exports, module) {
     var openInTerm = function () {
 
         console.log("Entering in openInTerm with :" + term);
-
         var entry = ProjectManager.getProjectRoot();
-        if (entry) {
+        var currentDocument = DocumentManager.getCurrentDocument();
+        var selectedItem = ProjectManager.getSelectedItem();
+        console.log(selectedItem);
+        if (selectedItem) {
+            if (selectedItem._isDirectory) {
+                console.log("Entering in openInTerm, path with my code '" + selectedItem._path + "'");
+                openInTermDomain.exec("startTerm", selectedItem._path, term)
+                    .done(function () {
+                        console.log("Term successfully started, showing : '" + selectedItem._path + "'");
+                    })
+                    .fail(function (err) {
+                        console.error("Error showing '" + selectedItem._path + "' in Term:", err);
+                    });
+            } else {
+                console.log("Entering in openInTerm, path with my code '" + selectedItem._parentPath + "'");
+                openInTermDomain.exec("startTerm", selectedItem._parentPath, term)
+                    .done(function () {
+                        console.log("Term successfully started, showing : '" + selectedItem._parentPath + "'");
+                    })
+                    .fail(function (err) {
+                        console.error("Error showing '" + selectedItem._parentPath + "' in Term:", err);
+                    });
+            }
+        } else if (entry) {
             console.log("Entering in openInTerm, path: '" + entry.fullPath + "'");
             openInTermDomain.exec("startTerm", entry.fullPath, term)
                 .done(function () {
