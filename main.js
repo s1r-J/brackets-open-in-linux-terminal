@@ -58,15 +58,16 @@ define(function (require, exports, module) {
         } else if (entry) {
             terminalPath = entry.fullPath;
         }
-
-        console.log("Entering in openInTerm, path '" + terminalPath + "'");
-        openInTermDomain.exec("startTerm", terminalPath, term)
-            .done(function () {
-                console.log("Term successfully started, showing : '" + terminalPath + "'");
-            })
-            .fail(function (err) {
-                console.error("Error showing '" + terminalPath + "' in Term:", err);
-            });
+        if (terminalPath) {
+            console.log("Entering in openInTerm, path '" + terminalPath + "'");
+            openInTermDomain.exec("startTerm", terminalPath, term)
+                .done(function () {
+                    console.log("Term successfully started, showing : '" + terminalPath + "'");
+                })
+                .fail(function (err) {
+                    console.error("Error showing '" + terminalPath + "' in Term:", err);
+                });
+        }
         console.log("openInTerm end");
 
     };
