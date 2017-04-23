@@ -16,7 +16,8 @@
             "gnome-terminal": 'gnome-terminal --working-directory="' + path + '"',
             "lxterminal": 'lxterminal --working-directory="' + path + '"',
             "terminator": 'terminator --working-directory="' + path + '"',
-            "cmd" : 'start "CMD" /D "' + path + '"'
+            "cmd": 'start "CMD" /D "' + path + '"',
+            "powershell": 'start "Powershell" powershell -noexit -command "Set-Location \'' + path + '\''
         };
 
         console.log('In cmdStartTerm, command: "' + commandMap[term]);
@@ -34,9 +35,17 @@
 
     function init(domainManager) {
         var paramsArray = [
-                { name: "path", type: "string", description: "The starting path: the project folder path" },
-                { name: "term", type: "string", description: "alternate terminal" }
-            ];
+            {
+                name: "path",
+                type: "string",
+                description: "The starting path: the project folder path"
+            },
+            {
+                name: "term",
+                type: "string",
+                description: "alternate terminal"
+            }
+        ];
 
         if (!domainManager.hasDomain("openInTerm")) {
             domainManager.registerDomain("openInTerm", {
