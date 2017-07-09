@@ -11,7 +11,7 @@ xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator
 
 NEW: Support for OSX Terminal and iTerm
 
-NEW: Support for Windows cmd and Powershell
+NEW: Support for Windows cmd, powershell and ConEmu
 
 
 ## Install
