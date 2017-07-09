@@ -7,11 +7,11 @@ Open the project folder in terminal.
 
 Currently supports:
 
-xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator
+Linux: xfce4-terminal, konsole, gnome-terminal, lxterminal and terminator
 
-NEW: Support for OSX Terminal and iTerm
+OSX: Terminal and iTerm
 
-NEW: Support for Windows cmd, powershell and ConEmu
+Windows: cmd, powershell and ConEmu
 
 
 ## Install
