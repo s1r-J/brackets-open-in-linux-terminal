@@ -11,6 +11,7 @@ define(function (require, exports, module) {
         CommandManager = brackets.getModule("command/CommandManager"),
         Commands = brackets.getModule("command/Commands"),
         Menus = brackets.getModule("command/Menus"),
+        KeyBindingManager = brackets.getModule("command/KeyBindingManager"),
         ProjectManager = brackets.getModule("project/ProjectManager"),
         Dialogs = brackets.getModule("widgets/Dialogs"),
         PanelTemplate = require("text!panel.html"),
@@ -85,6 +86,8 @@ define(function (require, exports, module) {
 
     CommandManager.register("Open in Terminal", COMMAND_ID, openInTerm);
     CommandManager.register("Set Terminal", DIALOG_ID, openPrefDialog);
+
+    KeyBindingManager.addBinding(COMMAND_ID, 'Ctrl-Shift-T');
 
     var menu1 = Menus.getContextMenu(Menus.ContextMenuIds.PROJECT_MENU);
     menu1.addMenuItem(COMMAND_ID);

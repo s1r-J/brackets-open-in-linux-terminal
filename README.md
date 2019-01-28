@@ -40,3 +40,7 @@ OR
 Click the terminal icon in the extensions toolbar
 
 ![Open](images/ext.png)
+
+OR
+
+Use the keyboard shortcuts Ctrl-Shift-T or define your own
